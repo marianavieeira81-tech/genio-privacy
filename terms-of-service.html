@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Termos de Serviço — Genio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --border: #2a2a2a;
+      --accent: #c8f560;
+      --accent-dim: rgba(200,245,96,0.08);
+      --text: #e8e8e0;
+      --muted: #888880;
+      --heading: #f5f5ee;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(13,13,13,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-dot {
+      width: 10px; height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .logo-name {
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--heading);
+      letter-spacing: 0.02em;
+    }
+
+    .header-label {
+      margin-left: auto;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 5rem 2rem 8rem;
+    }
+
+    .hero {
+      margin-bottom: 4rem;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 300;
+      color: var(--heading);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      flex-wrap: wrap;
+    }
+
+    .meta-row span { display: flex; align-items: center; gap: 0.4rem; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 3rem 0;
+      animation: fadeUp 0.7s ease 0.1s both;
+    }
+
+    section {
+      animation: fadeUp 0.7s ease 0.15s both;
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--heading);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    h2 .num {
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      background: var(--accent-dim);
+      border: 1px solid rgba(200,245,96,0.2);
+      padding: 0.2em 0.6em;
+      border-radius: 4px;
+    }
+
+    p { margin-bottom: 1rem; color: var(--text); }
+
+    ul {
+      list-style: none;
+      margin: 0.75rem 0 1rem 0;
+    }
+
+    ul li {
+      padding: 0.55rem 0.75rem;
+      border-left: 2px solid var(--border);
+      margin-bottom: 0.5rem;
+      font-size: 0.93rem;
+      transition: border-color 0.2s, background 0.2s;
+      border-radius: 0 4px 4px 0;
+    }
+
+    ul li:hover {
+      border-left-color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .card p { margin: 0; font-size: 0.9rem; }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(200,245,96,0.3); transition: border-color 0.2s; }
+    a:hover { border-bottom-color: var(--accent); }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 600px) {
+      main { padding: 3rem 1.25rem 5rem; }
+      header { padding: 1rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-dot"></div>
+  <span class="logo-name">Genio</span>
+  <span class="header-label">Termos de Serviço</span>
+</header>
+
+<main>
+  <div class="hero">
+    <p class="eyebrow">Documento Legal</p>
+    <h1>Condições claras para<br/><em>usar com confiança.</em></h1>
+    <div class="meta-row">
+      <span>📅 Última atualização: Abril de 2026</span>
+      <span>🌐 Aplicativo: Genio</span>
+      <span>📧 marianna_2372@outlook.com</span>
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <section>
+    <h2><span class="num">01</span> Aceitação dos Termos</h2>
+    <p>
+      Ao acessar ou utilizar o aplicativo <span class="highlight">Genio</span>, você concorda
+      com estes Termos de Serviço. Se você não concordar com alguma parte destes termos,
+      por favor, não utilize nosso aplicativo.
+    </p>
+    <p>
+      Estes termos se aplicam a todos os usuários do Genio, incluindo visitantes,
+      usuários registrados e qualquer pessoa que acesse o conteúdo disponibilizado.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">02</span> Descrição do Serviço</h2>
+    <p>O <span class="highlight">Genio</span> é um aplicativo que oferece:</p>
+    <ul>
+      <li>Acesso a funcionalidades personalizadas com base no seu perfil</li>
+      <li>Conteúdo e recursos adaptados à sua localização</li>
+      <li>Integração com serviços de terceiros, como o Login do Facebook</li>
+      <li>Notificações e comunicações relacionadas à sua conta</li>
+    </ul>
+    <p>
+      Reservamos o direito de modificar, suspender ou encerrar qualquer funcionalidade
+      do serviço a qualquer momento, com ou sem aviso prévio.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">03</span> Cadastro e Conta</h2>
+    <p>Para usar o Genio, você pode precisar criar uma conta. Ao fazê-lo, você se compromete a:</p>
+    <ul>
+      <li>Fornecer informações verdadeiras, precisas e completas</li>
+      <li>Manter suas informações de login em sigilo</li>
+      <li>Notificar-nos imediatamente em caso de uso não autorizado da sua conta</li>
+      <li>Ser responsável por todas as atividades realizadas com a sua conta</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">04</span> Uso Permitido</h2>
+    <p>Ao usar o Genio, você concorda em <strong>não</strong>:</p>
+    <ul>
+      <li>Usar o aplicativo para fins ilegais ou não autorizados</li>
+      <li>Tentar acessar sistemas ou dados sem permissão</li>
+      <li>Publicar conteúdo ofensivo, fraudulento ou que viole direitos de terceiros</li>
+      <li>Interferir no funcionamento normal do aplicativo ou de seus servidores</li>
+      <li>Criar contas falsas ou se passar por outras pessoas</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">05</span> Propriedade Intelectual</h2>
+    <p>
+      Todo o conteúdo disponível no <span class="highlight">Genio</span> — incluindo textos,
+      imagens, logotipos, ícones e código — é de propriedade do Genio ou de seus licenciantes
+      e está protegido por leis de propriedade intelectual.
+    </p>
+    <p>
+      Você não tem permissão para copiar, modificar, distribuir ou criar obras derivadas
+      sem autorização expressa e por escrito.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">06</span> Privacidade</h2>
+    <p>
+      O uso do Genio também está sujeito à nossa
+      <a href="https://genio-privacy.github.io/genio-privacy/">Política de Privacidade</a>,
+      que descreve como coletamos, usamos e protegemos suas informações pessoais.
+      Ao usar o aplicativo, você também concorda com essa política.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">07</span> Limitação de Responsabilidade</h2>
+    <p>
+      Na máxima extensão permitida por lei, o Genio não se responsabiliza por:
+    </p>
+    <ul>
+      <li>Danos diretos, indiretos ou consequentes decorrentes do uso do aplicativo</li>
+      <li>Interrupções temporárias no serviço por manutenção ou problemas técnicos</li>
+      <li>Conteúdo publicado por usuários ou proveniente de serviços de terceiros</li>
+      <li>Perda de dados causada por falhas fora do nosso controle razoável</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">08</span> Rescisão</h2>
+    <p>
+      Podemos suspender ou encerrar sua conta a qualquer momento caso você viole estes
+      Termos de Serviço, sem aviso prévio e sem responsabilidade da nossa parte.
+    </p>
+    <p>
+      Você também pode encerrar sua conta a qualquer momento entrando em contato conosco.
+      Após o encerramento, seus dados serão tratados conforme nossa
+      <a href="https://genio-privacy.github.io/genio-privacy/">Política de Privacidade</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">09</span> Alterações nos Termos</h2>
+    <p>
+      Reservamos o direito de atualizar estes Termos de Serviço a qualquer momento.
+      Notificaremos os usuários sobre alterações significativas por e-mail ou
+      através de um aviso dentro do próprio aplicativo.
+    </p>
+    <p>
+      O uso contínuo do Genio após as alterações implica a sua aceitação dos novos termos.
+      A data da última atualização sempre estará indicada no topo deste documento.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">10</span> Contato</h2>
+    <div class="card">
+      <p>Em caso de dúvidas sobre estes Termos de Serviço, entre em contato:</p>
+      <br/>
+      <p>📧 <a href="mailto:marianna_2372@outlook.com">marianna_2372@outlook.com</a></p>
+      <p>📱 Aplicativo: <span class="highlight">Genio</span></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2026 Genio · Todos os direitos reservados · <a href="mailto:marianna_2372@outlook.com">marianna_2372@outlook.com</a>
+</footer>
+
+</body>
+</html>
